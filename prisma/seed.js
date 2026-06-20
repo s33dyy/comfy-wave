@@ -23,11 +23,23 @@ const products = [
 ];
 
 async function main() {
-  console.log(`Start seeding categories...`);
+  console.log(`Start seeding categories to PostgreSQL...`);
   
   for (const p of products) {
+    const imageUrl = p.imageUrl;
+    delete p.imageUrl;
+    
     const product = await prisma.product.create({
-      data: p,
+      data: {
+        ...p,
+        media: {
+          create: {
+            url: imageUrl,
+            type: 'IMAGE',
+            isPrimary: true
+          }
+        }
+      },
     });
     console.log(`Created product with id: ${product.id} and category: ${product.category}`);
   }
