@@ -1,0 +1,153 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.backLink {
+  color: var(--secondary-text);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.card {
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  color: var(--foreground);
+}
+
+.label {
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--glass-border);
+  margin: 1.5rem 0;
+}
+
+.statusBadge {
+  background: var(--glass-border);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.statusForm {
+  display: flex;
+  gap: 1rem;
+}
+
+.select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--foreground);
+  flex-grow: 1;
+}
+
+.itemList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.itemThumb, .placeholderThumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.placeholderThumb {
+  background: var(--glass-border);
+}
+
+.itemMeta {
+  flex-grow: 1;
+}
+
+.itemName {
+  margin: 0 0 0.25rem 0;
+  font-weight: 500;
+}
+
+.itemPrice {
+  margin: 0;
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+}
+
+.itemTotal {
+  font-weight: 600;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.totalPrice {
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

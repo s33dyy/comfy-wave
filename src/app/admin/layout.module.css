@@ -1,0 +1,67 @@
+.adminContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarHeader {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.sidebarHeader h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  flex-grow: 1;
+}
+
+.navLink {
+  padding: 1rem 1.5rem;
+  color: var(--foreground);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.navLink:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-left-color: var(--primary);
+  color: var(--primary);
+}
+
+.sidebarFooter {
+  padding: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.backLink {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--primary);
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
