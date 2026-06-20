@@ -19,10 +19,10 @@ const nav = [
 ];
 
 const categories = [
-  { name: "Saree", slug: "Saree", imageUrl: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=300", count: 8 },
-  { name: "Kurti", slug: "Kurti", imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300", count: 5 },
-  { name: "Suit", slug: "Suit", imageUrl: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=300", count: 5 },
-  { name: "Lehenga", slug: "Lehenga", imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=300", count: 5 },
+  { name: "Saree", slug: "Saree", imageUrl: "https://scontent.fccu27-2.fna.fbcdn.net/v/t51.71878-15/505186798_3057628507734489_4309518793329778869_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s960x960&_nc_cat=110&ccb=1-7&_nc_sid=b5ba86&_nc_ohc=1hKpFaWIvikQ7kNvwEF0JOm&_nc_oc=Adrdh8RLjCOg9m9W5sZiKuA4H6N9zl8as3RdKcvg62Fejlc1jf0PNGFA1n_j5J11XQu2eTm-z22gyRnPNhJzJiAo&_nc_zt=23&_nc_ht=scontent.fccu27-2.fna&_nc_gid=TDPYU9-k2hNfTY1M-sK6zA&_nc_ss=7b2a8&oh=00_Af_EiHEW-gzWIqgWyhRwu_h_6myNRcv9jawsZQR1Bq0Z3w&oe=6A3C1C07", count: 8 },
+  { name: "Kurti", slug: "Kurti", imageUrl: "https://scontent.fccu27-2.fna.fbcdn.net/v/t51.71878-15/510421194_1037381771910801_6313552506831602302_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s960x960&_nc_cat=110&ccb=1-7&_nc_sid=b5ba86&_nc_ohc=Pkek8N1cgHEQ7kNvwFe7cZu&_nc_oc=AdrPNJ2P2F9xaprdqfEj64gnT8vj5BtxAe94SiFstLzujZ0WutVgMsYthbJYPvqqT5BHW2aF0JVSsQdsKaUChDSe&_nc_zt=23&_nc_ht=scontent.fccu27-2.fna&_nc_gid=2laKXXVajBZgFlVenLnS7A&_nc_ss=7b2a8&oh=00_Af8zFK-GkDIAjOazTsbXjSZetxTflAmLvcj9UEuGCImJug&oe=6A3C2B7E", count: 5 },
+  { name: "Suit", slug: "Suit", imageUrl: "https://scontent.fccu27-2.fna.fbcdn.net/v/t51.71878-15/466414442_550758961154183_523988932608343260_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1134&ctp=s960x960&_nc_cat=110&ccb=1-7&_nc_sid=b5ba86&_nc_ohc=c1ghZE8cP1MQ7kNvwFiD7Ul&_nc_oc=AdrZvv_1DOW7rEWolIibbnk69-HEP_Xcg62NVi1vumwxpYpbGu4O16G0p5E35Qa8xkIREicxoLyeSnD8vUB4y3Qc&_nc_zt=23&_nc_ht=scontent.fccu27-2.fna&_nc_gid=0IkzQd0T7hyvBXf5_fMJpg&_nc_ss=7b2a8&oh=00_Af_3mDlFlaJ33FNZpazJ-DjmMuxDLjZNCmKAV05Ol5yMNA&oe=6A3C37C2", count: 5 },
+  { name: "Lehenga", slug: "Lehenga", imageUrl: "https://scontent.fccu20-1.fna.fbcdn.net/v/t51.71878-15/504130202_757133549999693_8854744369026114540_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s960x960&_nc_cat=101&ccb=1-7&_nc_sid=b5ba86&_nc_ohc=F-2W1tgXEcgQ7kNvwHH_Rva&_nc_oc=Adpzt7Z-kqpoQ1s3-tMFprqEv3mqSGFi7rJKF4xFlcCzb6EFWlcVxHLqqyy1ktD0pYAA8n_FKl4Q2v3vTuwRiUBR&_nc_zt=23&_nc_ht=scontent.fccu20-1.fna&_nc_gid=1WmKmVK2WGfu5cMgWnr8WA&_nc_ss=7b2a8&oh=00_Af9Q_KcgIPxNQ6c9xZmCjPckHsyZwMWNqOJYcK39djFI0A&oe=6A3C2B8B", count: 5 },
 ];
 
 export default function Header() {
