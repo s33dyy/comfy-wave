@@ -12,10 +12,19 @@ model Product {
   name        String
   description String
   price       Float
-  imageUrl    String
   category    String
-  createdAt   DateTime    @default(now())
+  createdAt   DateTime       @default(now())
   orderItems  OrderItem[]
+  media       ProductMedia[]
+}
+
+model ProductMedia {
+  id        String   @id @default(uuid())
+  productId String
+  url       String
+  type      String   // "IMAGE" or "VIDEO"
+  isPrimary Boolean  @default(false)
+  product   Product  @relation(fields: [productId], references: [id])
 }
 
 model Order {

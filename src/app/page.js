@@ -21,13 +21,15 @@ export const metadata = {
 
 export default async function Home() {
   const products = await prisma.product.findMany({
-    take: 12,
+    take: 8,
     orderBy: { createdAt: "desc" },
+    include: { media: { where: { isPrimary: true }, take: 1 } }
   });
 
   const featuredProducts = await prisma.product.findMany({
     take: 4,
     orderBy: { price: "desc" },
+    include: { media: { where: { isPrimary: true }, take: 1 } }
   });
 
   return (

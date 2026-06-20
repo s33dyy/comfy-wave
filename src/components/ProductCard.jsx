@@ -10,8 +10,8 @@ export default function ProductCard({ product }) {
   return (
     <div className="group">
       <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-        <Link href={`/product/${product.id}`}>
-          <img src={product.imageUrl} alt={product.name} loading="lazy"
+        <Link href={`/shop/${product.id}`}>
+          <img src={product.media?.[0]?.url || "/placeholder.jpg"} alt={product.name} loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         </Link>
         {product.category && (
@@ -28,7 +28,7 @@ export default function ProductCard({ product }) {
       </div>
       <div className="mt-3 space-y-1 text-center">
         <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{product.category}</p>
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/shop/${product.id}`}>
           <h3 className="font-display text-lg leading-tight hover:text-maroon transition">{product.name}</h3>
         </Link>
       </div>
