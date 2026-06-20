@@ -1,6 +1,6 @@
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -11,15 +11,15 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata = {
-  title: "Comfywave | Premium Sarees",
-  description: "A house with stunning collections of sarees having traditional patterns with a touch of modern designs. Shop and feel the comfort...",
+  title: "Comfywave | Premium Clothing",
+  description: "A house with stunning collections of clothing having traditional patterns with a touch of modern designs.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
-        <Navbar />
+        <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
       </body>

@@ -1,48 +1,61 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { Facebook, Instagram, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 export default function Footer() {
+  const categories = [
+    { slug: "Saree", name: "Sarees" },
+    { slug: "Kurti", name: "Kurtis" },
+    { slug: "Suit", name: "Suits" },
+    { slug: "Lehenga", name: "Lehengas" },
+  ];
+
   return (
-    <footer className="bg-charcoal text-ivory py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <h2 className="font-display text-3xl tracking-widest uppercase mb-4 text-white">Comfywave</h2>
-            <p className="text-ivory/70 max-w-sm font-light leading-relaxed">
-              A house with stunning collections of sarees having traditional patterns with a touch of modern designs.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="font-display text-xl uppercase tracking-widest mb-6 text-gold">Shop</h3>
-            <div className="flex flex-col space-y-3">
-              <Link href="/shop" className="text-ivory/70 hover:text-white transition-colors duration-300">All Sarees</Link>
-              <Link href="/shop?category=traditional" className="text-ivory/70 hover:text-white transition-colors duration-300">Traditional</Link>
-              <Link href="/shop?category=modern" className="text-ivory/70 hover:text-white transition-colors duration-300">Modern</Link>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="font-display text-xl uppercase tracking-widest mb-6 text-gold">Visit Us</h3>
-            <div className="text-ivory/70 space-y-2 font-light">
-              <p>Kolkata, West Bengal</p>
-              <p>India</p>
-              <div className="mt-6">
-                <a 
-                  href="https://www.facebook.com/profile.php?id=100066721575529" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white hover:text-gold transition-colors duration-300 border border-ivory/20 hover:border-gold px-4 py-2 rounded-none"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                  Follow on Facebook
-                </a>
-              </div>
-            </div>
+    <footer className="bg-charcoal text-primary-foreground mt-24">
+      <div className="container py-16 grid md:grid-cols-4 gap-10">
+        <div>
+          <span className="font-brand text-lg text-gold">COMFYWAVE</span>
+          <p className="mt-4 text-sm text-primary-foreground/70 leading-relaxed">
+            A Kolkata atelier curating premium clothing from Bengal, South India and beyond. Every drape tells a story.
+          </p>
+          <div className="flex gap-3 mt-5">
+            <a href="https://instagram.com" className="h-9 w-9 grid place-items-center border border-primary-foreground/20 hover:border-gold hover:text-gold transition" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
+            <a href="https://facebook.com/profile.php?id=100066721575529" className="h-9 w-9 grid place-items-center border border-primary-foreground/20 hover:border-gold hover:text-gold transition" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
+            <a href={`https://wa.me/9830365132`} className="h-9 w-9 grid place-items-center border border-primary-foreground/20 hover:border-gold hover:text-gold transition" aria-label="WhatsApp"><MessageCircle className="h-4 w-4" /></a>
           </div>
         </div>
-        
-        <div className="mt-16 pt-8 border-t border-ivory/10 text-center text-ivory/50 text-sm font-light tracking-wide">
-          <p>&copy; {new Date().getFullYear()} Comfywave. All rights reserved.</p>
+
+        <div>
+          <h4 className="font-display text-lg mb-4 text-gold">Shop</h4>
+          <ul className="space-y-2 text-sm text-primary-foreground/70">
+            {categories.map((category) => (
+              <li key={category.slug}><Link href={`/shop?category=${category.slug}`} className="hover:text-gold">{category.name}</Link></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-display text-lg mb-4 text-gold">Policies</h4>
+          <ul className="space-y-2 text-sm text-primary-foreground/70">
+            <li><Link href="#" className="hover:text-gold">Shipping & Delivery</Link></li>
+            <li><Link href="#" className="hover:text-gold">Fabric Care Guide</Link></li>
+            <li><Link href="#" className="hover:text-gold">Privacy Policy</Link></li>
+            <li><Link href="#" className="hover:text-gold">Terms of Service</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-display text-lg mb-4 text-gold">Visit Us</h4>
+          <ul className="space-y-3 text-sm text-primary-foreground/70">
+            <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold shrink-0" /> Kolkata, West Bengal</li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold shrink-0" /> +91 98303 65132</li>
+            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-gold shrink-0" /> support@comfywave.in</li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-primary-foreground/10">
+        <div className="container py-5 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/50">
+          <p>© {new Date().getFullYear()} Comfywave · Crafted in Kolkata</p>
+          <p>All India Shipping · WhatsApp Booking</p>
         </div>
       </div>
     </footer>
