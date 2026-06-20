@@ -10,7 +10,7 @@ const slides = [
     eyebrow: "New Arrival",
     title: "The Bengal\nWeave",
     subtitle: "Explore our latest collection of handwoven Jamdani and Kantha stitch sarees, crafted with love.",
-    imageUrl: "https://images.unsplash.com/photo-1610189014605-721200155a69?q=80&w=2000&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=2000&auto=format&fit=crop",
     ctaLabel: "Shop Sarees",
     ctaHref: "/shop?category=Saree",
     align: "left",

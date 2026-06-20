@@ -19,10 +19,10 @@ const nav = [
 ];
 
 const categories = [
-  { name: "Saree", slug: "Saree", imageUrl: "https://images.unsplash.com/photo-1610189014605-721200155a69?w=300", count: 8 },
-  { name: "Kurti", slug: "Kurti", imageUrl: "https://images.unsplash.com/photo-1583391733958-d25e07fac0b2?w=300", count: 5 },
+  { name: "Saree", slug: "Saree", imageUrl: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=300", count: 8 },
+  { name: "Kurti", slug: "Kurti", imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300", count: 5 },
   { name: "Suit", slug: "Suit", imageUrl: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=300", count: 5 },
-  { name: "Lehenga", slug: "Lehenga", imageUrl: "https://images.unsplash.com/photo-1621245995804-9457612f0090?w=300", count: 5 },
+  { name: "Lehenga", slug: "Lehenga", imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=300", count: 5 },
 ];
 
 export default function Header() {
