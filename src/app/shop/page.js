@@ -9,18 +9,30 @@ export const metadata = {
 
 export default async function ShopPage({ searchParams }) {
   const resolvedParams = await searchParams;
-  const currentCategory = resolvedParams?.category;
+  const currentCategorySlug = resolvedParams?.category;
 
-  const whereClause = currentCategory ? { category: { equals: currentCategory } } : {};
+  const whereClause = currentCategorySlug 
+    ? { categorySlug: { equals: currentCategorySlug, mode: 'insensitive' } } 
+    : {};
   
   const products = await prisma.product.findMany({
-    where: whereClause,
+    where: { ...whereClause, status: "active" },
     orderBy: { createdAt: 'desc' }
   });
 
-  // Get unique categories for sidebar
-  const allProducts = await prisma.product.findMany({ select: { category: true } });
-  const uniqueCategories = [...new Set(allProducts.map(p => p.category).filter(Boolean))].sort();
+  // Fetch actual categories from DB instead of hardcoding or inferring
+  const activeCategories = await prisma.category.findMany({
+    where: { active: true },
+    orderBy: { sortOrder: "asc" }
+  });
+
+  const totalActiveProducts = await prisma.product.count({
+    where: { status: "active" }
+  });
+
+  // Find the current category object for the title
+  const currentCategoryObj = activeCategories.find(c => c.slug.toLowerCase() === currentCategorySlug?.toLowerCase());
+  const displayTitle = currentCategoryObj ? `${currentCategoryObj.name} Collection` : currentCategorySlug ? `${currentCategorySlug} Collection` : 'The Full Collection';
 
   return (
     <div className="bg-background min-h-screen">
@@ -28,10 +40,10 @@ export default async function ShopPage({ searchParams }) {
         <div className="container mx-auto px-4 py-12">
           <p className="text-xs text-muted-foreground uppercase tracking-widest">
             <Link href="/" className="hover:text-maroon transition">Home</Link> / 
-            <span className="mx-1 text-foreground">Shop {currentCategory && `/ ${currentCategory}`}</span>
+            <span className="mx-1 text-foreground">Shop {currentCategoryObj && `/ ${currentCategoryObj.name}`}</span>
           </p>
           <h1 className="font-display text-4xl md:text-5xl mt-3 text-foreground">
-            {currentCategory ? `${currentCategory} Collection` : 'The Full Collection'}
+            {displayTitle}
           </h1>
           <p className="text-muted-foreground mt-2 font-light">
             {products.length} pieces · Handpicked from Indian handloom clusters
@@ -48,18 +60,18 @@ export default async function ShopPage({ searchParams }) {
                 <li>
                   <Link 
                     href="/shop" 
-                    className={`transition-colors hover:text-maroon ${!currentCategory ? 'text-maroon font-medium' : 'text-muted-foreground'}`}
+                    className={`transition-colors hover:text-maroon ${!currentCategorySlug ? 'text-maroon font-medium' : 'text-muted-foreground'}`}
                   >
-                    All Collections ({allProducts.length})
+                    All Collections ({totalActiveProducts})
                   </Link>
                 </li>
-                {uniqueCategories.map((cat) => (
-                  <li key={cat}>
+                {activeCategories.map((cat) => (
+                  <li key={cat.slug}>
                     <Link 
-                      href={`/shop?category=${cat}`} 
-                      className={`transition-colors hover:text-maroon ${currentCategory?.toLowerCase() === cat.toLowerCase() ? 'text-maroon font-medium' : 'text-muted-foreground'}`}
+                      href={`/shop?category=${cat.slug}`} 
+                      className={`transition-colors hover:text-maroon ${currentCategorySlug?.toLowerCase() === cat.slug.toLowerCase() ? 'text-maroon font-medium' : 'text-muted-foreground'}`}
                     >
-                      {cat}
+                      {cat.name}
                     </Link>
                   </li>
                 ))}

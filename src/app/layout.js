@@ -20,11 +20,24 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const settings = await prisma.storeSettings.findFirst() || {};
+  
+  const dbCategories = await prisma.category.findMany({
+    where: { active: true },
+    orderBy: { sortOrder: "asc" }
+  });
+  
+  const headerCategories = await Promise.all(
+    dbCategories.map(async (cat) => {
+      const count = await prisma.product.count({ where: { categorySlug: cat.slug, status: "active" } });
+      return { ...cat, count };
+    })
+  );
+
   return (
     <html lang="en">
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
         <SettingsProvider settings={settings}>
-          <Header />
+          <Header categories={headerCategories} />
           <main className="min-h-screen">
             <Providers>{children}</Providers>
           </main>

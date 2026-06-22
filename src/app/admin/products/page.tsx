@@ -105,7 +105,16 @@ const AdminProducts = () => {
 
           </div>
           <div className="grid sm:grid-cols-4 gap-3">
-            <select value={editing.categorySlug || ""} onChange={(event) => set("categorySlug", event.target.value)} className="h-10 border border-border bg-background px-3 text-sm">
+            <select 
+              value={editing.categorySlug || ""} 
+              onChange={(event) => {
+                const selectedCat = categories.find(c => c.slug === event.target.value);
+                set("categorySlug", event.target.value);
+                set("category", selectedCat ? selectedCat.name : "");
+              }} 
+              className="h-10 border border-border bg-background px-3 text-sm"
+            >
+              <option value="">Select category...</option>
               {categories.map((category) => <option key={category.slug} value={category.slug}>{category.name}</option>)}
             </select>
           </div>
