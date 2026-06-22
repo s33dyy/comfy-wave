@@ -2,6 +2,7 @@ import { Inter, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Providers from "@/components/Providers";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cormorant = Cormorant_Garamond({ 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen">
+          <Providers>{children}</Providers>
+        </main>
         <Footer />
       </body>
     </html>

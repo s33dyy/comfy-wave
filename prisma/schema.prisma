@@ -7,15 +7,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id          String      @id @default(uuid())
+model Category {
+  id          String   @id @default(uuid())
+  slug        String   @unique
   name        String
-  description String
-  price       Float
-  category    String
-  createdAt   DateTime       @default(now())
-  orderItems  OrderItem[]
-  media       ProductMedia[]
+  description String?
+  imageUrl    String?
+  active      Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Product {
+  id           String      @id @default(uuid())
+  slug         String?     @unique
+  name         String
+  description  String
+  price        Float
+  categorySlug String?
+  category     String?
+  sku          String?
+  fabric       String?
+  occasion     String?
+  color        String?
+  imageUrl     String?
+  gallery      String[]
+  featured     Boolean     @default(false)
+  inStock      Boolean     @default(true)
+  status       String      @default("active")
+  tag          String?
+  sortOrder    Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now()) @updatedAt
+  orderItems   OrderItem[]
+  media        ProductMedia[]
 }
 
 model ProductMedia {
@@ -27,14 +52,45 @@ model ProductMedia {
   product   Product  @relation(fields: [productId], references: [id])
 }
 
+model HeroSlide {
+  id          String   @id @default(uuid())
+  eyebrow     String?
+  title       String
+  subtitle    String?
+  imageUrl    String
+  ctaLabel    String?
+  ctaHref     String?
+  align       String   @default("left")
+  active      Boolean  @default(true)
+  sortOrder   Int      @default(0)
+}
+
+model StoreSettings {
+  id              String   @id @default(uuid())
+  name            String
+  tagline         String?
+  whatsapp        String?
+  whatsappDisplay String?
+  email           String?
+  address         String?
+  facebook        String?
+  instagram       String?
+  notice          String?
+}
+
 model Order {
   id              String      @id @default(uuid())
   total           Float
-  status          String      @default("PENDING")
+  status          String      @default("pending")
   customerName    String
-  customerEmail   String
+  customerEmail   String?
+  phone           String?
+  city            String?
+  pincode         String?
+  notes           String?
   customerAddress String
   createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @default(now()) @updatedAt
   items           OrderItem[]
 }
 
