@@ -28,24 +28,32 @@ export default async function Home() {
   });
 
   const featuredProducts = await prisma.product.findMany({
+    where: { featured: true },
     take: 4,
-    orderBy: { price: "desc" }
+    orderBy: { createdAt: "desc" }
+  });
+
+  const heroSlides = await prisma.heroSlide.findMany({
+    where: { active: true },
+    orderBy: { sortOrder: "asc" }
   });
 
   return (
     <>
-      <HeroCarousel />
+      <HeroCarousel slides={heroSlides} />
 
-      <section className="container py-20">
-        <div className="text-center mb-12">
-          <p className="text-[11px] tracking-[0.3em] uppercase text-maroon mb-2">Curated This Week</p>
-          <h2 className="font-display text-4xl md:text-5xl">Featured Clothing</h2>
-          <div className="mx-auto w-24 gold-divider mt-4" />
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => <ProductCard key={product.id} product={product} />)}
-        </div>
-      </section>
+      {featuredProducts.length > 0 && (
+        <section className="container py-20">
+          <div className="text-center mb-12">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-maroon mb-2">Curated This Week</p>
+            <h2 className="font-display text-4xl md:text-5xl">Featured Clothing</h2>
+            <div className="mx-auto w-24 gold-divider mt-4" />
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => <ProductCard key={product.id} product={product} />)}
+          </div>
+        </section>
+      )}
 
       <CategoryShowcase />
       <WhyUs />

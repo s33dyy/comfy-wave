@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const slides = [
+const defaultSlides = [
   {
     id: "h1",
     eyebrow: "New Arrival",
@@ -27,21 +27,22 @@ const slides = [
   },
 ];
 
-export default function HeroCarousel() {
+export default function HeroCarousel({ slides = defaultSlides }) {
+  const activeSlides = slides && slides.length > 0 ? slides : defaultSlides;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (slides.length === 0) return;
-    const timer = setInterval(() => setIndex((current) => (current + 1) % slides.length), 6000);
+    if (activeSlides.length === 0) return;
+    const timer = setInterval(() => setIndex((current) => (current + 1) % activeSlides.length), 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlides]);
 
   return (
     <section className="relative w-full overflow-hidden bg-secondary">
       <div className="relative h-[78vh] min-h-[520px] max-h-[760px]">
-        {slides.map((slide, slideIndex) => (
-          <div key={slide.id} className={`absolute inset-0 transition-opacity duration-1000 ${index === slideIndex ? "opacity-100" : "opacity-0"}`}>
-            <img src={slide.imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+        {activeSlides.map((slide, slideIndex) => (
+          <div key={slide.id} className={`absolute inset-0 transition-opacity duration-1000 ${index === slideIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
+            <img src={slide.imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" style={{ direction: slide.align === "right" ? "rtl" : "ltr" }} />
             <div className="container relative h-full flex items-center">
               <div className={`max-w-xl ${slide.align === "right" ? "ml-auto text-right" : ""}`}>
@@ -60,8 +61,8 @@ export default function HeroCarousel() {
             </div>
           </div>
         ))}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          {slides.map((slide, slideIndex) => (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {activeSlides.map((slide, slideIndex) => (
             <button key={slide.id} onClick={() => setIndex(slideIndex)} aria-label={`slide ${slideIndex + 1}`}
               className={`h-1 transition-all ${index === slideIndex ? "w-10 bg-maroon" : "w-6 bg-charcoal/30"}`} />
           ))}
