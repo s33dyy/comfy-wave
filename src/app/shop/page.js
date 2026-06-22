@@ -15,13 +15,7 @@ export default async function ShopPage({ searchParams }) {
   
   const products = await prisma.product.findMany({
     where: whereClause,
-    orderBy: { createdAt: 'desc' },
-    include: {
-      media: {
-        where: { isPrimary: true },
-        take: 1
-      }
-    }
+    orderBy: { createdAt: 'desc' }
   });
 
   // Get unique categories for sidebar

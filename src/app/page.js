@@ -24,14 +24,12 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const products = await prisma.product.findMany({
     take: 8,
-    orderBy: { createdAt: "desc" },
-    include: { media: { where: { isPrimary: true }, take: 1 } }
+    orderBy: { createdAt: "desc" }
   });
 
   const featuredProducts = await prisma.product.findMany({
     take: 4,
-    orderBy: { price: "desc" },
-    include: { media: { where: { isPrimary: true }, take: 1 } }
+    orderBy: { price: "desc" }
   });
 
   return (

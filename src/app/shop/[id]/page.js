@@ -15,19 +15,18 @@ export default async function ProductDetailsPage({ params }) {
   const { id } = await params;
   
   const product = await prisma.product.findUnique({
-    where: { id },
-    include: {
-      media: {
-        orderBy: { isPrimary: 'desc' }
-      }
-    }
+    where: { id }
   });
 
   if (!product) return notFound();
 
   const whatsappUrl = `https://wa.me/9830365132?text=Hi! I am interested in ${encodeURIComponent(product.name)} (ID: ${product.id})`;
-  const images = product.media.filter(m => m.type === 'IMAGE');
-  const videos = product.media.filter(m => m.type === 'VIDEO');
+  const images = [];
+  if (product.imageUrl) images.push({ id: 'main', url: product.imageUrl });
+  if (product.gallery) {
+    product.gallery.forEach((url, i) => images.push({ id: `gal-${i}`, url }));
+  }
+  const videos = [];
 
   return (
     <div className="bg-background min-h-screen pb-20">
