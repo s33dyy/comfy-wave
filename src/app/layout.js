@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
 import { SettingsProvider } from "@/components/SettingsProvider";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cormorant = Cormorant_Garamond({ 
