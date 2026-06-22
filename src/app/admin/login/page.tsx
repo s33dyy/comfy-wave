@@ -35,13 +35,13 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-background">
       <div className="hidden lg:flex bg-gradient-hero text-primary-foreground p-12 flex-col justify-between">
-        <Link href="/" className="font-brand text-gold">ADHUNIK MAHAL</Link>
+        <Link href="/" className="font-brand text-gold">COMFY WAVE</Link>
         <div>
           <p className="text-[11px] tracking-[0.3em] uppercase text-gold mb-2">Atelier Console</p>
           <h2 className="font-display text-5xl leading-tight">Manage your<br/>boutique with grace.</h2>
           <p className="mt-4 text-primary-foreground/70 max-w-md">Orders, inventory, featured edits, hero stories and catalog settings are managed from this local console.</p>
         </div>
-        <p className="text-xs text-primary-foreground/40">© Adhunik Mahal · Kolkata</p>
+        <p className="text-xs text-primary-foreground/40">© Comfy Wave · Kolkata</p>
       </div>
       <div className="flex items-center justify-center p-8">
         <form onSubmit={submit} className="w-full max-w-sm space-y-6">

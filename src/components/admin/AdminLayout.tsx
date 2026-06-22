@@ -31,7 +31,7 @@ export function AdminLayout({ children, title, subtitle }: { children: ReactNode
     <div className="min-h-screen bg-secondary/40 flex">
       <aside className="w-60 bg-charcoal text-primary-foreground flex flex-col">
         <Link href="/admin" className="p-5 border-b border-primary-foreground/10">
-          <span className="font-brand text-gold text-sm">ADHUNIK MAHAL</span>
+          <span className="font-brand text-gold text-sm">COMFY WAVE</span>
           <p className="text-[10px] uppercase tracking-widest text-primary-foreground/50 mt-1">Admin Panel</p>
         </Link>
         <nav className="flex-1 p-3 space-y-1">
