@@ -104,7 +104,7 @@ const AdminOrders = () => {
                   <td className="p-3 text-right">
                     <div className="inline-flex gap-1">
                       <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setSelected(order)}><Eye className="h-3.5 w-3.5" /></Button>
-                      <Button variant="ghost" size="icon" className="h-7 w-7 text-bottle" asChild><a href={`https://wa.me/${order.phone.replace(/\D/g, "")}`}><MessageCircle className="h-3.5 w-3.5" /></a></Button>
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-bottle" asChild><a href={`https://wa.me/${order.phone ? order.phone.replace(/\D/g, "") : ""}`}><MessageCircle className="h-3.5 w-3.5" /></a></Button>
                     </div>
                   </td>
                 </tr>

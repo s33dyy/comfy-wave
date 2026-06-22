@@ -177,7 +177,7 @@ const AdminProducts = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="p-3 text-muted-foreground capitalize">{product.categorySlug.replace("-", " ")}</td>
+                  <td className="p-3 text-muted-foreground capitalize">{product.categorySlug?.replace("-", " ") || product.category || ""}</td>
                   <td className="p-3 text-muted-foreground">{product.fabric}</td>
                   <td className="p-3 text-center">
                     <button onClick={() => quickToggle(product, { status: product.status === "active" ? "draft" : "active" })}
