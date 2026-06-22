@@ -1,11 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { ShoppingBag, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useStoreSettings } from "@/components/SettingsProvider";
 
 export default function ProductCard({ product }) {
-  // Comfywave products don't have slugs natively yet, using ID for routing if needed
-  // But wait, the user wants "contact in whatsapp" like Adhunik Mahal.
-  const whatsappUrl = `https://wa.me/9830365132?text=Hi! I am interested in ${encodeURIComponent(product.name)}`;
+  const settings = useStoreSettings();
+  const rawNumber = settings.whatsapp ? settings.whatsapp.replace(/[^0-9]/g, '') : "9830365132";
+  const whatsappUrl = `https://wa.me/${rawNumber}?text=Hi! I am interested in ${encodeURIComponent(product.name)}`;
 
   return (
     <div className="group">

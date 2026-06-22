@@ -20,7 +20,9 @@ export default async function ProductDetailsPage({ params }) {
 
   if (!product) return notFound();
 
-  const whatsappUrl = `https://wa.me/9830365132?text=Hi! I am interested in ${encodeURIComponent(product.name)} (ID: ${product.id})`;
+  const settings = await prisma.storeSettings.findFirst() || {};
+  const rawNumber = settings.whatsapp ? settings.whatsapp.replace(/[^0-9]/g, '') : "9830365132";
+  const whatsappUrl = `https://wa.me/${rawNumber}?text=Hi! I am interested in ${encodeURIComponent(product.name)} (ID: ${product.id})`;
   const images = [];
   if (product.imageUrl) images.push({ id: 'main', url: product.imageUrl });
   if (product.gallery) {

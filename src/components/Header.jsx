@@ -7,6 +7,7 @@ import { ChevronDown, Heart, Menu, Search, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useStoreSettings } from "@/components/SettingsProvider";
 
 // We will mock the CartContext for now, or use Comfywave's actual cart logic later.
 // import { useCart } from "@/context/CartContext";
@@ -33,6 +34,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const settings = useStoreSettings();
 
   const submitSearch = (event) => {
     event.preventDefault();
@@ -44,8 +46,8 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
       <div className="bg-maroon text-primary-foreground text-xs">
         <div className="container flex items-center justify-between py-2 gap-4">
-          <p className="hidden sm:block tracking-wider uppercase">Free shipping across India</p>
-          <p className="sm:hidden text-center w-full">Free India shipping</p>
+          <p className="hidden sm:block tracking-wider uppercase">{settings.notice || "Free shipping across India"}</p>
+          <p className="sm:hidden text-center w-full">{settings.notice || "Free shipping across India"}</p>
           <div className="hidden md:flex items-center gap-4 text-[11px]">
             <Link href="/track" className="hover:text-gold transition">Track Order</Link>
           </div>
@@ -61,7 +63,7 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] bg-background">
             <Link href="/" onClick={() => setMenuOpen(false)} className="block mb-6">
-              <span className="font-brand text-lg text-maroon">COMFYWAVE</span>
+              <span className="font-brand text-lg text-maroon">{settings.name?.toUpperCase() || "COMFYWAVE"}</span>
             </Link>
             <nav className="flex flex-col gap-1">
               {nav.map((item) => (
@@ -81,8 +83,8 @@ export default function Header() {
         </Sheet>
 
         <Link href="/" className="flex flex-col leading-none">
-          <span className="font-brand text-lg md:text-xl text-maroon">COMFYWAVE</span>
-          <span className="hidden md:block text-[10px] tracking-[0.25em] text-muted-foreground uppercase mt-1">Premium Clothing</span>
+          <span className="font-brand text-lg md:text-xl text-maroon">{settings.name?.toUpperCase() || "COMFYWAVE"}</span>
+          <span className="hidden md:block text-[10px] tracking-[0.25em] text-muted-foreground uppercase mt-1">{settings.tagline || "Premium Clothing"}</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1 ml-6">

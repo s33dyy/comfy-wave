@@ -13,6 +13,10 @@ export default async function ProductDetailsPage({ params }) {
     notFound();
   }
 
+  const settings = await prisma.storeSettings.findFirst() || {};
+  const rawNumber = settings.whatsapp ? settings.whatsapp.replace(/[^0-9]/g, '') : "919830365132";
+  const whatsappUrl = `https://wa.me/${rawNumber}?text=${encodeURIComponent(`Hi ${settings.name || 'Comfywave'}! I'm interested in the ${product.name}. Could you share more details?`)}`;
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-20">
       <div className="mb-8">
@@ -70,7 +74,7 @@ export default async function ProductDetailsPage({ params }) {
 
           <div className="mt-12">
             <a 
-              href={`https://wa.me/919830365132?text=${encodeURIComponent(`Hi Comfywave! I'm interested in the ${product.name}. Could you share more details?`)}`}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full md:w-auto items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-none uppercase tracking-widest text-xs font-semibold transition-all duration-300 shadow-elegant hover:-translate-y-1"
