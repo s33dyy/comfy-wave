@@ -102,7 +102,7 @@ const AdminProducts = () => {
         <div className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-3">
             <Input value={editing.name || ""} onChange={(event) => set("name", event.target.value)} placeholder="Product name" className="rounded-none" required />
-            <Input value={editing.sku || ""} onChange={(event) => set("sku", event.target.value)} placeholder="SKU" className="rounded-none" required />
+
           </div>
           <div className="grid sm:grid-cols-4 gap-3">
             <select value={editing.categorySlug || ""} onChange={(event) => set("categorySlug", event.target.value)} className="h-10 border border-border bg-background px-3 text-sm">
@@ -173,7 +173,7 @@ const AdminProducts = () => {
                       <img src={product.imageUrl} alt="" className="h-12 w-12 object-cover bg-secondary" />
                       <div>
                         <p className="font-medium">{product.name}</p>
-                        <p className="text-xs text-muted-foreground">{product.sku}</p>
+
                       </div>
                     </div>
                   </td>
