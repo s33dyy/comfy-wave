@@ -13,6 +13,8 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant' 
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Comfywave | Premium Clothing",
   description: "A house with stunning collections of clothing having traditional patterns with a touch of modern designs.",

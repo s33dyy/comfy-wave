@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { MessageCircle, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const product = await prisma.product.findUnique({ where: { id } });

@@ -2,6 +2,8 @@ import prisma from '@/lib/prisma';
 import ProductCard from '@/components/ProductCard';
 import Link from 'next/link';
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: 'Shop | Comfywave',
   description: 'Browse our collection of stunning clothing.',
